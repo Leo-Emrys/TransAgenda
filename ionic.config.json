@@ -1,6 +1,6 @@
 {
   "name": "THS",
-  "app_id": "",
+  "app_id": "fb5610ad",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
