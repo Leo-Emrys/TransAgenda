@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nouveau Traitement</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-slides pager=true paginationType="progress">
+      <!-- PREMIERE PARTIE DU FORMULAIRE - INFOS GENERALES -->
+      <ion-slide id="part1">
+        <ion-item class="first">
+          <ion-label floating>Nom du produit</ion-label>
+          <ion-input type="text" [(ngModel)]="traitement.produit"></ion-input>
+        </ion-item>
+        <small class="error" *ngIf="!traitement.nom && submit">Veuillez entrer un produit (ex: androtardyl...)</small>
+        <ion-item>
+          <ion-label floating>Dosage</ion-label>
+          <ion-input type="text" [(ngModel)]="traitement.dosage"></ion-input>
+        </ion-item>
+        <small class="error" *ngIf="!traitement.dosage && submit">Veuillez entrer un dosage (ex: 2 comprimés, 0.5mL...)</small>
+        <ion-item>
+          <ion-label floating>Hormone</ion-label>
+          <ion-select [(ngModel)]="traitement.hormone">
+            <ion-option *ngFor="let hormone of listHormones" [value]="hormone">{{hormone}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <small class="error" *ngIf="!traitement.hormone && submit">Veuillez choisir une hormone</small>
+        <ion-row class="row_item">
+          <ion-col col-10>
+            <ion-item>
+              <ion-label class="black">Fréquence : tous les </ion-label>
+              <ion-input type="number" [(ngModel)]="traitement.frequence"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-2>
+            <ion-label>jours</ion-label>
+          </ion-col>
+        </ion-row>
+        <small class="error" *ngIf="!traitement.frequence && submit">Veuillez entrer un nombre</small>
+        <ion-item class="last">
+          <ion-label floating>Type</ion-label>
+          <ion-select [(ngModel)]="traitement.type">
+            <ion-option *ngFor="let type of listTypes" [value]="type">{{type}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <button ion-button full class="bouton" (click)="submitForm(1)">Suivant</button>
+      </ion-slide>
+
+      <!-- DEUXIEME PARTIE DU FORMULAIRE - ZONES -->
+      <ion-slide id="part2">
+        <h2 class="first">Zones d'application</h2>
+        <ion-item>
+          <ion-label floating>Nouvelle zone</ion-label>
+          <ion-select [(ngModel)]="newzone" (ionSelect)="selectZone($event)">
+            <ion-option *ngFor="let zone of listZones" [value]="zone">{{zone}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-row class="boutonrow">
+          <ion-col col-6>
+            <button ion-button color="secondary" full (click)="slidePrev()">Précédent</button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button full>Suivant</button>
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+
+      <!-- TROISIEME PARTIE DU FORMULAIRE - DATE -->
+      <ion-slide id="part3">
+
+      </ion-slide>
+
+      <!-- QUATRIEME PARTIE DU FORMULAIRE - RAPPELS -->
+      <ion-slide id="part4">
+
+      </ion-slide>
+    </ion-slides>
+  </ion-grid>
+</ion-content>

@@ -1,14 +1,27 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      THS
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
+  <h2 class="titre">Bienvenue sur l'appli THS !</h2>
   <p>
-    Hello world
+    Cette application a été créée dans le but d'aider <span class="bold">les personnes trans qui prennent un traitement hormonal.</span>
   </p>
+  <p>
+    Vous pouvez <span class="bold">enregistrer un ou plusieurs traitement(s)</span> (eostrogènes, testostérone, ...) et configurer des rappels pour être sur·e de ne jamais manquer une prise !
+  </p>
+  <p>
+    Cette appli permet aussi de prévoir des <span class="bold">rappels</span> pour vos renouvellements d'ordonnance et de traitement, ainsi qu'un suivi de vos <span class="bold">taux hormonaux</span> dans le temps.
+  </p>
+  <p>Pour commencer, appuyez sur le bouton ci-dessous pour enregistrer votre premier traitement : </p>
+  <button ion-button full (click)="newTraitement()">Ajouter un traitement</button>
 </ion-content>
+
+<ion-footer>
+  <menu-footer>
+  </menu-footer>
+</ion-footer>

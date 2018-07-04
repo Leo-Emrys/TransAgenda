@@ -1,0 +1,45 @@
+page-new-traitement {
+    .col {
+        padding:0!important;
+    }
+    .row_item {
+        margin-top: 25px;
+    }
+    .black {
+        color:black!important;
+    }
+    .grid, .slides, .slide, .slide-zoom {
+        height: 100%;
+    }
+    /* pour eviter le bouton par-dessus le formulaire */
+    .last {
+        margin-bottom: 65px!important;
+    }
+    .first {
+        margin-top: 20px!important;
+    }
+    .bouton, .boutonrow {
+        position:absolute;
+        bottom: 15px;
+        left:0;
+    }
+    .boutonrow {
+        width:100%!important;
+        .col {
+            padding:2px!important;
+        }
+        button {
+            color:white;
+        }
+    }
+
+    .swiper-pagination {
+        //display: block!important;
+        top:0px;
+        
+    }
+    .swiper-pagination-progressbar {
+        background: color($colors, primary)!important;
+    }
+    
+}

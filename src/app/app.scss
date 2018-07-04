@@ -14,3 +14,22 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+/*
+** CLASSES COMMUNES
+*/
+.bold {
+    font-weight: bold!important;
+}
+
+.titre {
+    color: color($colors, primary);
+}
+/* Pour eviter remontée éléments quand input selectionné */
+.scroll-content {
+    padding-bottom:initial!important;
+}
+/* messages d'erreur */
+.error {
+    color: color($colors, danger)!important;
+}

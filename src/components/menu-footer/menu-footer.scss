@@ -1,0 +1,9 @@
+menu-footer {
+    ion-col {
+        text-align: center;
+        ion-icon {
+            font-size: 30px;
+        }
+        color: color($colors, primary);
+    }
+}

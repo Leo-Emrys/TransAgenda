@@ -1,0 +1,24 @@
+<!-- Generated template for the MenuFooterComponent component -->
+<ion-grid>
+  <ion-row justify-content-center>
+    <ion-col (click)="goTo('home')">
+      <ion-icon color="primary" [name]="currentPage=='home' ? 'ios-home' : 'ios-home-outline'"></ion-icon>
+      <br/><span>Accueil</span>
+    </ion-col>
+    <ion-col (click)="goTo('ordos')">
+      <ion-icon color="primary" [name]="currentPage=='ordos' ? 'ios-document' : 'ios-document-outline'">
+      </ion-icon>
+      <br/>Ordonnances
+    </ion-col>
+    <ion-col (click)="goTo('stocks')">
+      <ion-icon color="primary" [name]="currentPage=='stocks' ? 'ios-cube' : 'ios-cube-outline'">
+      </ion-icon>
+      <br/>Stocks
+    </ion-col>
+    <ion-col (click)="goTo('stats')">
+      <ion-icon color="primary"[name]="currentPage=='stats' ? 'ios-stats' : 'ios-stats-outline'">
+      </ion-icon>
+      <br/>Suivi
+    </ion-col>
+  </ion-row>
+</ion-grid>

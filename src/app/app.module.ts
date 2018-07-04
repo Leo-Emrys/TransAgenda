@@ -6,11 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { MenuFooterComponent } from '../components/menu-footer/menu-footer';
+import { VariablesCommunesProvider } from '../providers/variables-communes/variables-communes';
+import { NewTraitementPage } from '../pages/new-traitement/new-traitement';
 
 @NgModule({
   declarations: [
+    HomePage,
+    MenuFooterComponent,
     MyApp,
-    HomePage
+    NewTraitementPage
   ],
   imports: [
     BrowserModule,
@@ -18,13 +23,16 @@ import { HomePage } from '../pages/home/home';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    HomePage,
+    MenuFooterComponent,
     MyApp,
-    HomePage
+    NewTraitementPage
   ],
   providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    VariablesCommunesProvider
   ]
 })
 export class AppModule {}
