@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { NavController, NavParams, Slides } from 'ionic-angular';
 import { listTypes, listHormones, listZones } from '../../listes/listes';
 
@@ -14,9 +14,13 @@ export class NewTraitementPage {
   listZones;
   @ViewChild(Slides) slides: Slides;
   submit=false;
-  newzone;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  zones = [];
+  new_zone;
+  new_cote;
+  new_zone_add;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ngZone: NgZone) {
   }
 
   ngOnInit() {
@@ -56,5 +60,28 @@ export class NewTraitementPage {
       break;
     }
   }
+
+  addZone() {
+    this.submit=true;
+    if(this.new_zone) {
+      let nom = this.new_zone;
+      if(this.new_zone=="add") {
+        nom = this.new_zone_add;
+        this.listZones.push(this.new_zone_add);
+        this.listZones.sort();
+      }
+      if(nom && nom!='') {
+        this.ngZone.run(() => {
+          this.zones.push({nom: nom, cote: this.new_cote});
+        });
+        this.submit = false;
+        if(this.new_zone=='add')
+          this.new_zone=null;
+        this.new_zone_add='';
+      }
+      
+    }
+  }
+
 
 }

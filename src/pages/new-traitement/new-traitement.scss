@@ -41,5 +41,13 @@ page-new-traitement {
     .swiper-pagination-progressbar {
         background: color($colors, primary)!important;
     }
+
+    #add_button {
+        margin-top: 10px;
+    }
+
+    .list_container {
+        overflow:auto!important;
+    }
     
 }

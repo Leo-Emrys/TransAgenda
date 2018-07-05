@@ -50,12 +50,57 @@
       <!-- DEUXIEME PARTIE DU FORMULAIRE - ZONES -->
       <ion-slide id="part2">
         <h2 class="first">Zones d'application</h2>
+        <p *ngIf="!zones || zones.length<=0">
+          <small>Entrez ici des zones d'application du traitement, si c'est pertinent pour vous. Sinon, cliquez sur "suivant".</small>
+          <br/>
+          <small>Vous pourrez ajouter des zones par la suite.</small>
+        </p>
+        <!-- LISTE DES ZONES -->
+        <div class="list_container">
+          <ion-list *ngIf="zones && zones.length>0">
+            <ion-list-header>
+              Zones enregistrées
+            </ion-list-header>
+            <ion-item *ngFor="let zone of zones; let last=last" [ngClass]="last ? 'last': ''">
+              {{zone.nom}} {{zone.cote ? zone.cote : ''}}
+              <ion-icon name="trash" color="danger" item-right (click)="delete(zone)"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+        <!-- <ion-row>
+          <ion-col col-6> -->
+        <!-- AJOUTER UNE ZONE -->
         <ion-item>
-          <ion-label floating>Nouvelle zone</ion-label>
-          <ion-select [(ngModel)]="newzone" (ionSelect)="selectZone($event)">
+          <ion-label>Zone</ion-label>
+          <ion-select [(ngModel)]="new_zone">
             <ion-option *ngFor="let zone of listZones" [value]="zone">{{zone}}</ion-option>
+            <ion-option *ngFor="let zone of zones_suppl" [value]="zone">{{zone}}</ion-option>
+            <ion-option value="add">Ajouter...</ion-option>
           </ion-select>
         </ion-item>
+        <small class="error" *ngIf="submit && !new_zone">Veuillez choisir une zone</small>
+        <ion-item *ngIf="new_zone=='add'">
+          <ion-label floating>Entrez la nouvelle zone</ion-label>
+          <ion-input type="text" [(ngModel)]="new_zone_add"></ion-input>
+        </ion-item>
+        <small class="error" *ngIf="submit && new_zone=='add' && !new_zone_add">Veuillez entrer le nom de la zone</small>
+        <!--  </ion-col>
+          <ion-col col-6> -->
+        <ion-item>
+          <ion-label>Côté</ion-label>
+          <ion-select [(ngModel)]="new_cote">
+            <ion-option value='' selected>aucun</ion-option>
+            <ion-option value="gauche">gauche</ion-option>
+            <ion-option value="droit">droit</ion-option>
+          </ion-select>
+        </ion-item>
+        <button ion-button round (click)="addZone()" id="add_button">
+          <ion-icon name="add"></ion-icon> &nbsp;ajouter</button>
+        <!-- </ion-col>
+        </ion-row> -->
+        <!-- <ion-fab middle middle id="add_button">
+          <button ion-fab (click)="add()"><ion-icon name="add"></ion-icon></button>
+        </ion-fab> -->
         <ion-row class="boutonrow">
           <ion-col col-6>
             <button ion-button color="secondary" full (click)="slidePrev()">Précédent</button>
