@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content overflow-scroll="true" padding>
   <ion-grid>
     <ion-slides pager=true paginationType="progress">
       <!-- PREMIERE PARTIE DU FORMULAIRE - INFOS GENERALES -->
@@ -56,19 +56,16 @@
           <small>Vous pourrez ajouter des zones par la suite.</small>
         </p>
         <!-- LISTE DES ZONES -->
-        <div class="list_container">
-          <ion-list *ngIf="zones && zones.length>0">
-            <ion-list-header>
-              Zones enregistrées
-            </ion-list-header>
-            <ion-item *ngFor="let zone of zones; let last=last" [ngClass]="last ? 'last': ''">
-              {{zone.nom}} {{zone.cote ? zone.cote : ''}}
-              <ion-icon name="trash" color="danger" item-right (click)="delete(zone)"></ion-icon>
-            </ion-item>
-          </ion-list>
-        </div>
-        <!-- <ion-row>
-          <ion-col col-6> -->
+        <ion-list *ngIf="zones && zones.length>0">
+          <ion-list-header>
+            Zones enregistrées
+          </ion-list-header>
+          <ion-item *ngFor="let zone of zones">
+            {{zone.nom}} {{zone.cote ? zone.cote : ''}}
+            <ion-icon name="trash" color="danger" item-right (click)="deleteZone(zone)"></ion-icon>
+          </ion-item>
+        </ion-list>
+
         <!-- AJOUTER UNE ZONE -->
         <ion-item>
           <ion-label>Zone</ion-label>
@@ -84,8 +81,7 @@
           <ion-input type="text" [(ngModel)]="new_zone_add"></ion-input>
         </ion-item>
         <small class="error" *ngIf="submit && new_zone=='add' && !new_zone_add">Veuillez entrer le nom de la zone</small>
-        <!--  </ion-col>
-          <ion-col col-6> -->
+
         <ion-item>
           <ion-label>Côté</ion-label>
           <ion-select [(ngModel)]="new_cote">
@@ -94,13 +90,9 @@
             <ion-option value="droit">droit</ion-option>
           </ion-select>
         </ion-item>
-        <button ion-button round (click)="addZone()" id="add_button">
+        <button ion-button round (click)="addZone()" id="add_button" class="last">
           <ion-icon name="add"></ion-icon> &nbsp;ajouter</button>
-        <!-- </ion-col>
-        </ion-row> -->
-        <!-- <ion-fab middle middle id="add_button">
-          <button ion-fab (click)="add()"><ion-icon name="add"></ion-icon></button>
-        </ion-fab> -->
+
         <ion-row class="boutonrow">
           <ion-col col-6>
             <button ion-button color="secondary" full (click)="slidePrev()">Précédent</button>

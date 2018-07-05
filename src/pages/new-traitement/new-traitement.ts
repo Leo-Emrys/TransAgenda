@@ -83,5 +83,7 @@ export class NewTraitementPage {
     }
   }
 
-
+  deleteZone(zone) {
+    this.zones.splice(this.zones.indexOf(zone), 1);
+  }
 }

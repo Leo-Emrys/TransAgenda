@@ -19,9 +19,9 @@ page-new-traitement {
         margin-top: 20px!important;
     }
     .bouton, .boutonrow {
-        position:absolute;
+        /* position:absolute;
         bottom: 15px;
-        left:0;
+        left:0; */
     }
     .boutonrow {
         width:100%!important;
@@ -46,8 +46,7 @@ page-new-traitement {
         margin-top: 10px;
     }
 
-    .list_container {
-        overflow:auto!important;
+    .slide-zoom {
+        overflow: auto;
     }
-    
 }
