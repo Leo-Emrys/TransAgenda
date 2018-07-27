@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Trans Agenda
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content overflow-scroll="true" padding>
+  <ion-list>
+    <ion-card *ngFor="let traitement of traitements">
+      <h2 class="titre" text-center>{{traitement.produit}}</h2>
+      <br>
+      <div class="date" text-center>Prochaine prise : {{prochaineDate(traitement)}}</div>
+      <button ion-button (click)="nouvellePrise(traitement)">J'ai pris mon traitement !</button>
+    </ion-card>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <menu-footer>
+  </menu-footer>
+</ion-footer>
