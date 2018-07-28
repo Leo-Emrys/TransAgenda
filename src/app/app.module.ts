@@ -12,6 +12,7 @@ import { NewTraitementPage } from '../pages/new-traitement/new-traitement';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { ListeTraitementsPage } from '../pages/liste-traitements/liste-traitements';
+import { FonctionsCommunesProvider } from '../providers/fonctions-communes/fonctions-communes';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ListeTraitementsPage } from '../pages/liste-traitements/liste-traitemen
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SplashScreen,
     StatusBar,
-    VariablesCommunesProvider
+    VariablesCommunesProvider,
+    FonctionsCommunesProvider
   ]
 })
 export class AppModule {}
