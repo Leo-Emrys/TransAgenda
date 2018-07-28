@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-<<<<<<< Updated upstream
 import { FonctionsCommunesProvider } from "../../providers/fonctions-communes/fonctions-communes";
-=======
 import { DetailTraitementPage } from '../detail-traitement/detail-traitement';
->>>>>>> Stashed changes
 
 @Component({
   selector: 'page-liste-traitements',
@@ -15,15 +12,8 @@ export class ListeTraitementsPage {
 
   traitements;
 
-<<<<<<< Updated upstream
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private fonctionCommunes : FonctionsCommunesProvider) {
     console.log(this.traitements);
-=======
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
-    //this.traitements = this.navParams.get("traitements");
-    console.log(this.traitements);
-    //if (!this.traitements) {
->>>>>>> Stashed changes
       //aller chercher en local
       this.storage.get('TransAgenda_traitements').then((liste) => {
         if (liste && liste.length > 0) {
@@ -35,10 +25,6 @@ export class ListeTraitementsPage {
       }).catch((err) => {
         console.log('erreur get liste traitements local', err);
       });
-<<<<<<< Updated upstream
-=======
-    //}
->>>>>>> Stashed changes
   }
 
   ionViewDidLoad() {
