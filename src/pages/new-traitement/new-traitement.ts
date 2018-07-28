@@ -3,6 +3,7 @@ import { NavController, NavParams, Slides } from 'ionic-angular';
 import { listTypes, listHormones, listZones } from '../../listes/listes';
 import { Storage } from '@ionic/storage';
 import { ListeTraitementsPage } from '../liste-traitements/liste-traitements';
+import { NotificationsProvider } from '../../providers/notifications/notifications';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class NewTraitementPage {
 
   today;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private ngZone: NgZone, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ngZone: NgZone, private storage: Storage, private notifications: NotificationsProvider) {
     let date = new Date();
     this.today = date.getFullYear() + '-' + (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-' + (date.getDate() < 10 ? '0' + date.getDate() : date.getDate());
     console.log(this.today);
@@ -86,6 +87,8 @@ export class NewTraitementPage {
             liste = [this.traitement];
           }
           this.storage.set('TransAgenda_traitements', liste).then(() => {
+            //creer les notifications
+            this.notifications.createNotifications(this.traitement);
             //aller page liste traitements
             this.navCtrl.setRoot(ListeTraitementsPage, {traitements: liste});
           }).catch((err) => {

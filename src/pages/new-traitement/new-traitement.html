@@ -104,12 +104,18 @@
         </ion-row>
       </ion-slide>
 
-      <!-- TROISIEME PARTIE DU FORMULAIRE - DATE -->
+      <!-- TROISIEME PARTIE DU FORMULAIRE - PROCHAINE DATE ET ZONE -->
       <ion-slide id="part3">
         <h2 class="first">Prochaine prise</h2>
         <ion-item id="item_date">
           <ion-label>Date</ion-label>
           <ion-datetime [min]="today" max="3000-12-31" displayFormat="DD/MM/YYYY" [(ngModel)]="traitement.date_debut"></ion-datetime>
+        </ion-item>
+        <ion-item id="item_zone">
+          <ion-label>Zone</ion-label>
+          <ion-select [(ngModel)]="traitement.next_zone" >
+            <ion-option *ngFor="let zone of traitement.zones" [value]="zone" >{{zone.nom}} {{zone.cote ? zone.cote : ''}}{{zone.cote=="droit" ? '(e)' : ''}}</ion-option> <!--[(ngModel)]="traitement.next_zone"-->
+          </ion-select>
         </ion-item>
         <small class="error" *ngIf="!traitement.date_debut && submit">Veuillez choisir une date</small>
         <ion-row class="boutonrow btndate">

@@ -9,9 +9,10 @@
 <ion-content overflow-scroll="true" padding>
   <ion-list>
     <ion-card *ngFor="let traitement of traitements">
-      <h2 class="titre" text-center>{{traitement.produit}}</h2>
+      <h2 class="titre" (click)="openDetails(traitement)" text-center>{{traitement.produit}} &nbsp;&nbsp;&nbsp;<ion-icon name="ios-arrow-forward"></ion-icon></h2>
       <br>
-      <div class="date" text-center>Prochaine prise : {{prochaineDate(traitement)}}</div>
+      <div class="date" (click)="openDetails(traitement)" text-center>Prochaine prise : {{prochaineDate(traitement)}}</div>
+      <div class="nextZone" (click)="openDetails(traitement)" *ngIf="traitement.next_zone" text-center>Zone : {{fonctionCommunes.printZone(traitement.next_zone)}}</div>
       <button ion-button (click)="nouvellePrise(traitement)">J'ai pris mon traitement !</button>
     </ion-card>
   </ion-list>
