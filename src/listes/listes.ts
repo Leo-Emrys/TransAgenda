@@ -1,4 +1,4 @@
-export const listHormones = ['Anti-androgènes', 'oestrogènes', 'progestérone', 'testostérone'];
-export const listTypes = ['comprimés', 'injections', 'gel', 'patch', 'crème', 'implant'];
+export const listHormones = ['Anti-androgènes', 'Oestrogènes', 'Progestérone', 'Testostérone'];
+export const listTypes = ['Comprimés', 'Injections', 'Gel', 'Patch', 'Crème', 'Implant'];
 
-export const listZones = ['abdomen', 'bras', 'cuisse', 'épaule', 'fesse', 'jambe'];
+export const listZones = ['Abdomen', 'Bras', 'Cuisse', 'Epaule', 'Fesse', 'Jambe'];
