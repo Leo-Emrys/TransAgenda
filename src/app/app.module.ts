@@ -9,13 +9,26 @@ import { HomePage } from '../pages/home/home';
 import { MenuFooterComponent } from '../components/menu-footer/menu-footer';
 import { VariablesCommunesProvider } from '../providers/variables-communes/variables-communes';
 import { NewTraitementPage } from '../pages/new-traitement/new-traitement';
+import { ListeTraitementsPage } from '../pages/liste-traitements/liste-traitements';
 
 import { IonicStorageModule } from '@ionic/storage';
+<<<<<<< Updated upstream
 import { ListeTraitementsPage } from '../pages/liste-traitements/liste-traitements';
 import { FonctionsCommunesProvider } from '../providers/fonctions-communes/fonctions-communes';
+=======
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { NotificationsProvider } from '../providers/notifications/notifications';
+import { DetailTraitementPage } from '../pages/detail-traitement/detail-traitement';
+import { GererRappelsPage } from '../pages/gerer-rappels/gerer-rappels';
+import { GererZonesPage } from '../pages/gerer-zones/gerer-zones';
+
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
+    DetailTraitementPage,
+    GererRappelsPage,
+    GererZonesPage,
     HomePage,
     ListeTraitementsPage,
     MenuFooterComponent,
@@ -34,18 +47,26 @@ import { FonctionsCommunesProvider } from '../providers/fonctions-communes/fonct
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    DetailTraitementPage,
+    GererRappelsPage,
+    GererZonesPage,
     HomePage,
     ListeTraitementsPage,
     MenuFooterComponent,
     MyApp,
-    NewTraitementPage
+    NewTraitementPage,
   ],
   providers: [
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SplashScreen,
     StatusBar,
     VariablesCommunesProvider,
+<<<<<<< Updated upstream
     FonctionsCommunesProvider
+=======
+    NotificationsProvider
+>>>>>>> Stashed changes
   ]
 })
 export class AppModule {}

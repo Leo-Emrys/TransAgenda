@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+<<<<<<< Updated upstream
 import { FonctionsCommunesProvider } from "../../providers/fonctions-communes/fonctions-communes";
+=======
+import { DetailTraitementPage } from '../detail-traitement/detail-traitement';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'page-liste-traitements',
@@ -11,17 +15,30 @@ export class ListeTraitementsPage {
 
   traitements;
 
+<<<<<<< Updated upstream
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private fonctionCommunes : FonctionsCommunesProvider) {
     console.log(this.traitements);
+=======
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+    //this.traitements = this.navParams.get("traitements");
+    console.log(this.traitements);
+    //if (!this.traitements) {
+>>>>>>> Stashed changes
       //aller chercher en local
       this.storage.get('TransAgenda_traitements').then((liste) => {
         if (liste && liste.length > 0) {
           this.traitements = liste;
           //console.log(this.traitements);
+          //TEST
+          //this.notifService.createNotifications(this.traitements[0]);
         }
       }).catch((err) => {
         console.log('erreur get liste traitements local', err);
       });
+<<<<<<< Updated upstream
+=======
+    //}
+>>>>>>> Stashed changes
   }
 
   ionViewDidLoad() {
@@ -35,6 +52,11 @@ export class ListeTraitementsPage {
     var next = new Date(last.setTime( last.getTime() + traitement.frequence * 86400000 ));
     let datestr =  (next.getDate() < 10 ? '0' + next.getDate() : next.getDate()) + '/' +  (next.getMonth() + 1 < 10 ? '0' + (next.getMonth() + 1) : next.getMonth() + 1) + '/' + next.getFullYear();
     return datestr;
+  }
+
+  openDetails(traitement) {
+    console.log(traitement);
+    this.navCtrl.push(DetailTraitementPage, {traitement: traitement});
   }
 
 }

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Trans Agenda
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <h2>Fiche du traitement</h2>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 text-right>
+        Produit :
+      </ion-col>
+      <ion-col col-6 text-left>
+        {{traitement.produit}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 text-right>
+        Dosage :
+      </ion-col>
+      <ion-col col-6 text-left>
+        {{traitement.dosage}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 text-right>
+        Fréquence :
+      </ion-col>
+      <ion-col col-6 text-left>
+        {{traitement.frequence}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 text-right>
+        Hormone :
+      </ion-col>
+      <ion-col col-6 text-left>
+        {{traitement.hormone}}
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      Dernière prise :
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col col-6>
+        <button full ion-button (click)="gererZones()">
+          Gérer les zones
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button full ion-button (click)="gererRappels()">
+          Gérer les rappels
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>
