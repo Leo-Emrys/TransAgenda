@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FonctionsCommunesProvider } from "../../providers/fonctions-communes/fonctions-communes";
 import { DetailTraitementPage } from '../detail-traitement/detail-traitement';
+import { NewTraitementPage } from '../new-traitement/new-traitement';
 
 @Component({
   selector: 'page-liste-traitements',
@@ -45,4 +46,7 @@ export class ListeTraitementsPage {
     this.navCtrl.push(DetailTraitementPage, {traitement: traitement});
   }
 
+  new() {
+    this.navCtrl.setRoot(NewTraitementPage)
+  }
 }

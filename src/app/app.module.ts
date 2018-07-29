@@ -18,10 +18,12 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
 import { DetailTraitementPage } from '../pages/detail-traitement/detail-traitement';
 import { GererRappelsPage } from '../pages/gerer-rappels/gerer-rappels';
 import { GererZonesPage } from '../pages/gerer-zones/gerer-zones';
+import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
 
 
 @NgModule({
   declarations: [
+    AddRappelModalPage,
     DetailTraitementPage,
     GererRappelsPage,
     GererZonesPage,
@@ -43,6 +45,7 @@ import { GererZonesPage } from '../pages/gerer-zones/gerer-zones';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    AddRappelModalPage,
     DetailTraitementPage,
     GererRappelsPage,
     GererZonesPage,
