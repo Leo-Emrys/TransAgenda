@@ -11,7 +11,7 @@ export class NotificationsProvider {
   createNotifications(traitement) {
     let liste = traitement.rappels;
     liste.forEach((rappel, index) => {
-      let prochdate = new Date(new Date(traitement.date_debut).getTime() - (1000 * 60 * 60 * 24 * rappel.nb_jours));
+      let prochdate = new Date(new Date(traitement.start_date).getTime() - (1000 * 60 * 60 * 24 * rappel.nb_jours));
       let year = prochdate.getFullYear();
       let month = prochdate.getMonth();
       let day = prochdate.getDate();

@@ -109,15 +109,15 @@
         <h2 class="first">Prochaine prise</h2>
         <ion-item id="item_date">
           <ion-label>Date</ion-label>
-          <ion-datetime [min]="today" max="3000-12-31" displayFormat="DD/MM/YYYY" [(ngModel)]="traitement.date_debut"></ion-datetime>
+          <ion-datetime [min]="today" max="3000-12-31" displayFormat="DD/MM/YYYY" [(ngModel)]="traitement.start_date"></ion-datetime>
         </ion-item>
-        <ion-item id="item_zone"  *ngIf="traitement.zones != null && traitement.zones.length >0">
+        <ion-item id="item_zone"  *ngIf="traitement.zones != null && traitement.zones.length >1">
           <ion-label>Zone</ion-label>
           <ion-select [(ngModel)]="traitement.next_zone" >
             <ion-option *ngFor="let zone of traitement.zones" [value]="zone" >{{zone.nom}} {{zone.cote ? zone.cote : ''}}{{zone.cote=="droit" ? '(e)' : ''}}</ion-option> <!--[(ngModel)]="traitement.next_zone"-->
           </ion-select>
         </ion-item>
-        <small class="error" *ngIf="!traitement.date_debut && submit">Veuillez choisir une date</small>
+        <small class="error" *ngIf="!traitement.start_date && submit">Veuillez choisir une date</small>
         <ion-row class="boutonrow btndate">
           <ion-col col-6>
             <button ion-button color="secondary" full (click)="slidePrev()">Précédent</button>

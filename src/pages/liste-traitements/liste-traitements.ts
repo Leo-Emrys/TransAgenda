@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FonctionsCommunesProvider } from "../../providers/fonctions-communes/fonctions-communes";
+import { GestionTraitementProvider} from "../../providers/gestion-traitement/gestion-traitement"
 import { DetailTraitementPage } from '../detail-traitement/detail-traitement';
 
 @Component({
@@ -12,7 +13,8 @@ export class ListeTraitementsPage {
 
   traitements;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private fonctionCommunes : FonctionsCommunesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ngZone: NgZone, private storage: Storage,
+               private fonctionCommunes : FonctionsCommunesProvider, private gestionTraitement : GestionTraitementProvider) {
     console.log(this.traitements);
       //aller chercher en local
       this.storage.get('TransAgenda_traitements').then((liste) => {
@@ -31,18 +33,22 @@ export class ListeTraitementsPage {
     console.log('ionViewDidLoad ListeTraitementsPage');
   }
 
-  prochaineDate(traitement) {
-    // dans le tur-fu : ajouter prochaineDate en attribut de traitement et re calcul du champ que lors de la fonction de 
-    // mise à jour du traitement, appelée par le bouton 'j'ai pris mon traitement'
-    let last = new Date(traitement.date_debut);
-    var next = new Date(last.setTime( last.getTime() + traitement.frequence * 86400000 ));
-    let datestr =  (next.getDate() < 10 ? '0' + next.getDate() : next.getDate()) + '/' +  (next.getMonth() + 1 < 10 ? '0' + (next.getMonth() + 1) : next.getMonth() + 1) + '/' + next.getFullYear();
-    return datestr;
-  }
-
   openDetails(traitement) {
     console.log(traitement);
     this.navCtrl.push(DetailTraitementPage, {traitement: traitement});
   }
+
+  updateTraitement(traitement) {
+
+    this.ngZone.run(() => {
+      // mise à jour de la zone pour la prochaine prise
+      this.gestionTraitement.updateNextZone(traitement);
+
+      // mise à jour de la date de la prochaine prise
+      this.gestionTraitement.updateNextDate(traitement);
+   
+   });
+}
+    
 
 }

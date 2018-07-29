@@ -4,6 +4,8 @@ import { listTypes, listHormones, listZones } from '../../listes/listes';
 import { Storage } from '@ionic/storage';
 import { ListeTraitementsPage } from '../liste-traitements/liste-traitements';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
+import { GestionTraitementProvider} from "../../providers/gestion-traitement/gestion-traitement"
+
 
 
 @Component({
@@ -12,7 +14,7 @@ import { NotificationsProvider } from '../../providers/notifications/notificatio
 })
 export class NewTraitementPage {
 
-  traitement = { zones: [], rappels: [] };
+  traitement = { zones: [], rappels: [], next_date: Date};
   listHormones;
   listTypes;
   listZones;
@@ -27,7 +29,8 @@ export class NewTraitementPage {
 
   today;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private ngZone: NgZone, private storage: Storage, private notifications: NotificationsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ngZone: NgZone, private storage: Storage, 
+              private notifications: NotificationsProvider, private gestionTraitement : GestionTraitementProvider) {
     let date = new Date();
     this.today = date.getFullYear() + '-' + (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-' + (date.getDate() < 10 ? '0' + date.getDate() : date.getDate());
     console.log(this.today);
@@ -73,8 +76,9 @@ export class NewTraitementPage {
         this.slideNext();
         break;
       case 3:
-        console.log(this.traitement['date_debut']);
-        if (this.traitement['date_debut']) {
+        console.log(this.traitement['start_date']);
+        if (this.traitement['start_date'] != null) {
+          this.gestionTraitement.initNextDate(this.traitement);
           this.submit = false;
           this.slideNext();
         }

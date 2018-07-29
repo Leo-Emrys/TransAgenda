@@ -18,6 +18,7 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
 import { DetailTraitementPage } from '../pages/detail-traitement/detail-traitement';
 import { GererRappelsPage } from '../pages/gerer-rappels/gerer-rappels';
 import { GererZonesPage } from '../pages/gerer-zones/gerer-zones';
+import { GestionTraitementProvider } from '../providers/gestion-traitement/gestion-traitement';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { GererZonesPage } from '../pages/gerer-zones/gerer-zones';
     StatusBar,
     VariablesCommunesProvider,
     FonctionsCommunesProvider,
-    NotificationsProvider
+    NotificationsProvider,
+    GestionTraitementProvider
   ]
 })
 export class AppModule {}
