@@ -111,7 +111,7 @@
           <ion-label>Date</ion-label>
           <ion-datetime [min]="today" max="3000-12-31" displayFormat="DD/MM/YYYY" [(ngModel)]="traitement.date_debut"></ion-datetime>
         </ion-item>
-        <ion-item id="item_zone">
+        <ion-item id="item_zone"  *ngIf="traitement.zones != null && traitement.zones.length >0">
           <ion-label>Zone</ion-label>
           <ion-select [(ngModel)]="traitement.next_zone" >
             <ion-option *ngFor="let zone of traitement.zones" [value]="zone" >{{zone.nom}} {{zone.cote ? zone.cote : ''}}{{zone.cote=="droit" ? '(e)' : ''}}</ion-option> <!--[(ngModel)]="traitement.next_zone"-->
