@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { FonctionsCommunesProvider } from "../../providers/fonctions-communes/fonctions-communes";
 import { GestionTraitementProvider} from "../../providers/gestion-traitement/gestion-traitement"
 import { DetailTraitementPage } from '../detail-traitement/detail-traitement';
+import { NewTraitementPage } from '../new-traitement/new-traitement';
 
 @Component({
   selector: 'page-liste-traitements',
@@ -50,5 +51,9 @@ export class ListeTraitementsPage {
    });
 }
     
+
+  new() {
+    this.navCtrl.setRoot(NewTraitementPage)
+  }
 
 }

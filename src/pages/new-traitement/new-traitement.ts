@@ -1,11 +1,15 @@
 import { Component, ViewChild, NgZone } from '@angular/core';
-import { NavController, NavParams, Slides } from 'ionic-angular';
+import { NavController, NavParams, Slides, Platform } from 'ionic-angular';
 import { listTypes, listHormones, listZones } from '../../listes/listes';
 import { Storage } from '@ionic/storage';
 import { ListeTraitementsPage } from '../liste-traitements/liste-traitements';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
+<<<<<<< HEAD
 import { GestionTraitementProvider} from "../../providers/gestion-traitement/gestion-traitement"
 
+=======
+import { LocalNotifications } from '@ionic-native/local-notifications';
+>>>>>>> 0fc44e2d45dcf0d0bf82ae9bc48e854afff140f3
 
 
 @Component({
@@ -85,9 +89,13 @@ export class NewTraitementPage {
         break;
       case 4:
         this.storage.get('TransAgenda_traitements').then((liste)=> {
+          let idtraitement = 0;
           if(liste) {
+            idtraitement = liste.length-1;
+            this.traitement['id']=idtraitement;
             liste.push(this.traitement);
           } else {
+            this.traitement['id']=idtraitement;
             liste = [this.traitement];
           }
           this.storage.set('TransAgenda_traitements', liste).then(() => {
@@ -119,9 +127,10 @@ export class NewTraitementPage {
           this.traitement.zones.push({ nom: nom, cote: this.new_cote });
         });
         this.submit = false;
-        if (this.new_zone == 'add')
+        //if (this.new_zone == 'add')
           this.new_zone = null;
         this.new_zone_add = '';
+        this.new_cote = null;
       }
     }
   }
