@@ -58,10 +58,11 @@ export class NotificationsProvider {
       if (!found) {
         reject('not found');
       }
+      let id = traitement.id + "" + index;
      /*  this.localNotifications.getScheduledIds().then((result) => {
         console.log('scheduled rappels', result);
       });
-      let id = traitement.id + "" + index;
+      
       this.localNotifications.getScheduled(+id).then((res) => {
         console.log('delete', res);
       }); */
