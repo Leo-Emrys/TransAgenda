@@ -4,12 +4,8 @@ import { listTypes, listHormones, listZones } from '../../listes/listes';
 import { Storage } from '@ionic/storage';
 import { ListeTraitementsPage } from '../liste-traitements/liste-traitements';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
-<<<<<<< HEAD
 import { GestionTraitementProvider} from "../../providers/gestion-traitement/gestion-traitement"
-
-=======
 import { LocalNotifications } from '@ionic-native/local-notifications';
->>>>>>> 0fc44e2d45dcf0d0bf82ae9bc48e854afff140f3
 
 
 @Component({
