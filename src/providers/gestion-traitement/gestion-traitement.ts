@@ -62,7 +62,8 @@ export class GestionTraitementProvider {
     }
 
     
-    updateNextDate(traitement){
+    updateDates(traitement){
+      traitement.last_date = this.fonctionCommunes.toPrintDateFormat(new Date());
       traitement.next_date = this.fonctionCommunes.toPrintDateFormat(this.getCalculatedNextDate(traitement));
       this.updateOneTraitementInStorage(traitement);
     }
@@ -73,8 +74,8 @@ export class GestionTraitementProvider {
 
     private getCalculatedNextDate(traitement) {
       let last = this.fonctionCommunes.toDateFormat(traitement.next_date);
-      var next = new Date(last.setTime( last.getTime() + traitement.frequence * 86400000 ));
-      let datestr =  (next.getDate() < 10 ? '0' + next.getDate() : next.getDate()) + '/' +  (next.getMonth() + 1 < 10 ? '0' + (next.getMonth() + 1) : next.getMonth() + 1) + '/' + next.getFullYear();
-      return datestr;
+      var nextDate = new Date(last.setTime(new Date().getTime() + traitement.frequence * 86400000));// version calcul a partir d'aujourd'hui
+      //last.getTime() + traitement.frequence * 86400000 ));  //version calcul a partir derniere date de prise
+      return nextDate;
     }  
 }

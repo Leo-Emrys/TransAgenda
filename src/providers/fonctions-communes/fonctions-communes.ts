@@ -22,13 +22,12 @@ export class FonctionsCommunesProvider {
 
   toPrintDateFormat(date)
   {
-    let dateArray = date.split('-');
-    if (dateArray && dateArray.length == 3){
-      let year  = dateArray[0];
-      let month = dateArray[1];
-      let day = dateArray[2];
+    if (date){
+      let year  = date.getFullYear();//.toString().substr(-2);
+      let month = date.getMonth()+1;
+      let day = date.getDate();
 
-      return day + "/" + month + "/" + year;
+      return (day < 10 ? '0' + day : day) + "/" + (month < 10 ? '0' + month : month) + "/" + year;
     }
     return date;
   }

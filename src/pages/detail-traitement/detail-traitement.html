@@ -43,8 +43,8 @@
         {{traitement.hormone}}
       </ion-col>
     </ion-row>
-    <ion-row justify-content-center>
-      Dernière prise :
+    <ion-row *ngIf="traitement.last_date" justify-content-center>
+      Dernière prise : {{traitement.last_date}}
     </ion-row>
     <ion-row justify-content-center>
       <ion-col col-6>

@@ -45,8 +45,8 @@ export class ListeTraitementsPage {
       // mise à jour de la zone pour la prochaine prise
       this.gestionTraitement.updateNextZone(traitement);
 
-      // mise à jour de la date de la prochaine prise
-      this.gestionTraitement.updateNextDate(traitement);
+      // mise à jour de la date de la prochaine prise et de la derniere
+      this.gestionTraitement.updateDates(traitement);
    
    });
 }

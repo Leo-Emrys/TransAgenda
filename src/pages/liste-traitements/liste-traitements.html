@@ -14,6 +14,7 @@
       <div class="date" (click)="openDetails(traitement)" text-center>Prochaine prise : {{traitement.next_date}}</div>
       <div class="nextZone" (click)="openDetails(traitement)" *ngIf="traitement.next_zone" text-center>Zone : {{fonctionCommunes.printZone(traitement.next_zone)}}</div>
       <button ion-button (click)="updateTraitement(traitement)">J'ai pris mon traitement !</button>
+      <!-- updateTraitement a partir date du clic. prevoir possibilite d'entrer une date de derniere prise ?-->
     </ion-card>
   </ion-list>
   <button ion-button (click)='new()'>Nouveau</button>

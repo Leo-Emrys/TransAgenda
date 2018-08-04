@@ -14,7 +14,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 })
 export class NewTraitementPage {
 
-  traitement = { zones: [], rappels: [], next_date: Date};
+  traitement = { zones: [], rappels: [], next_date: Date, last_date : Date};
   listHormones;
   listTypes;
   listZones;
