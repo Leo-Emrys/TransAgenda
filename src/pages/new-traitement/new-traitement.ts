@@ -88,13 +88,12 @@ export class NewTraitementPage {
         this.storage.get('TransAgenda_traitements').then((liste)=> {
           let idtraitement = 0;
           if(liste) {
-            idtraitement = liste.length-1;
-            this.traitement['id']=idtraitement;
+            idtraitement = liste.length;
             liste.push(this.traitement);
           } else {
-            this.traitement['id']=idtraitement;
             liste = [this.traitement];
           }
+          this.traitement['id']=idtraitement;
           console.log(liste);
           this.storage.set('TransAgenda_traitements', liste).then(() => {
             //creer les notifications

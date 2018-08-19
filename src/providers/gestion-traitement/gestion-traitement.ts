@@ -13,11 +13,16 @@ export class GestionTraitementProvider {
   }
   
   private updateOneTraitementInStorage(modifiedTraitement){
+    console.log('update', modifiedTraitement);
     // Recupere la liste de traitements existante, modifie UN des traitement, enregistre liste modifiée dans storage
     this.storage.get('TransAgenda_traitements').then((liste)=> {
       if(liste) {
-      let originTraitementIndex = liste.findIndex(traitement => traitement.nom === modifiedTraitement.nom);
-      liste[originTraitementIndex] = modifiedTraitement;
+        let originTraitementIndex = liste.findIndex(traitement => traitement.id === modifiedTraitement.id);
+        console.log('index ancien', originTraitementIndex);
+        if(originTraitementIndex)
+          liste[originTraitementIndex] = modifiedTraitement;
+        else //non trouvé dans la liste, pas normal
+          console.log('erreur impossible de retrouver traitement '+modifiedTraitement.id);
       
       // Si la liste est nulle, on la créé... utile ? de tte façon y'a un souci.  
       } else {
