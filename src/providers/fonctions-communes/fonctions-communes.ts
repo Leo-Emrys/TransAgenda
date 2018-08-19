@@ -22,12 +22,16 @@ export class FonctionsCommunesProvider {
 
   toPrintDateFormat(date)
   {
-    if (date){
+    console.log('toprintdateformat', date);
+    if (date && date instanceof Date){
       let year  = date.getFullYear();//.toString().substr(-2);
       let month = date.getMonth()+1;
       let day = date.getDate();
 
       return (day < 10 ? '0' + day : day) + "/" + (month < 10 ? '0' + month : month) + "/" + year;
+    } else if(date) {
+      let tab = date.split('-');
+      return tab[2]+'/'+tab[1]+'/'+tab[0];
     }
     return date;
   }

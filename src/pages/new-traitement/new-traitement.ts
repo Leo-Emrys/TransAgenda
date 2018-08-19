@@ -14,7 +14,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 })
 export class NewTraitementPage {
 
-  traitement = { zones: [], rappels: [], next_date: Date, last_date : Date};
+  traitement = { zones: [], rappels: [], next_date: ''};
   listHormones;
   listTypes;
   listZones;
@@ -78,6 +78,7 @@ export class NewTraitementPage {
       case 3:
         console.log(this.traitement['start_date']);
         if (this.traitement['start_date'] != null) {
+          //this.traitement['start_date'] = new Date(this.traitement['start_date']);
           this.gestionTraitement.initNextDate(this.traitement);
           this.submit = false;
           this.slideNext();
@@ -94,6 +95,7 @@ export class NewTraitementPage {
             this.traitement['id']=idtraitement;
             liste = [this.traitement];
           }
+          console.log(liste);
           this.storage.set('TransAgenda_traitements', liste).then(() => {
             //creer les notifications
             this.notifications.createNotifications(this.traitement);
