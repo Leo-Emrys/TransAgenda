@@ -5,6 +5,7 @@ import { FonctionsCommunesProvider } from "../../providers/fonctions-communes/fo
 import { GestionTraitementProvider} from "../../providers/gestion-traitement/gestion-traitement"
 import { DetailTraitementPage } from '../detail-traitement/detail-traitement';
 import { NewTraitementPage } from '../new-traitement/new-traitement';
+import { NotificationsProvider } from '../../providers/notifications/notifications';
 
 @Component({
   selector: 'page-liste-traitements',
@@ -15,7 +16,7 @@ export class ListeTraitementsPage {
   traitements;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private ngZone: NgZone, private storage: Storage,
-               private fonctionCommunes : FonctionsCommunesProvider, private gestionTraitement : GestionTraitementProvider) {
+               private fonctionCommunes : FonctionsCommunesProvider, private notificationsProvider: NotificationsProvider, private gestionTraitement : GestionTraitementProvider) {
     //console.log(this.traitements);
       //aller chercher en local
       this.storage.get('TransAgenda_traitements').then((liste) => {
@@ -47,6 +48,9 @@ export class ListeTraitementsPage {
 
       // mise à jour de la date de la prochaine prise et de la derniere
       this.gestionTraitement.updateDates(traitement);
+
+      // mise à jour des rappels programmés
+      this.notificationsProvider.scheduleAllRappels(traitement);
    
    });
 }

@@ -12,32 +12,36 @@ export class GestionTraitementProvider {
   constructor(private storage: Storage, private fonctionCommunes : FonctionsCommunesProvider,) {  
   }
   
-  private updateOneTraitementInStorage(modifiedTraitement){
-    console.log('update', modifiedTraitement);
-    // Recupere la liste de traitements existante, modifie UN des traitement, enregistre liste modifiée dans storage
-    this.storage.get('TransAgenda_traitements').then((liste)=> {
-      if(liste) {
-        let originTraitementIndex = liste.findIndex(traitement => traitement.id === modifiedTraitement.id);
-        console.log('index ancien', originTraitementIndex);
-        if(originTraitementIndex)
-          liste[originTraitementIndex] = modifiedTraitement;
-        else //non trouvé dans la liste, pas normal
-          console.log('erreur impossible de retrouver traitement '+modifiedTraitement.id);
-      
-      // Si la liste est nulle, on la créé... utile ? de tte façon y'a un souci.  
-      } else {
-          liste = [modifiedTraitement];
-      }
-
-      // Remplace liste dans storage
-      this.storage.set('TransAgenda_traitements', liste).then(() => {
+  updateOneTraitementInStorage(modifiedTraitement){
+    return new Promise((resolve, reject) => {
+      console.log('update', modifiedTraitement);
+      // Recupere la liste de traitements existante, modifie UN des traitement, enregistre liste modifiée dans storage
+      this.storage.get('TransAgenda_traitements').then((liste)=> {
+        if(liste) {
+          let originTraitementIndex = liste.findIndex(traitement => traitement.id === modifiedTraitement.id);
+          console.log('index ancien', originTraitementIndex);
+          if(originTraitementIndex!==-1)
+            liste[originTraitementIndex] = modifiedTraitement;
+          else //non trouvé dans la liste, pas normal
+            console.log('erreur impossible de retrouver traitement '+modifiedTraitement.id);
         
+        // Si la liste est nulle, on la créé... utile ? de tte façon y'a un souci.  
+        } else {
+            liste = [modifiedTraitement];
+        }
+  
+        // Remplace liste dans storage
+        this.storage.set('TransAgenda_traitements', liste).then(() => {
+          resolve(true);
+        }).catch((err) => {
+          console.log('erreur gestion-traitement updateOneTraitementInStorage set liste traitements local', err);
+          reject(err);
+        });
       }).catch((err) => {
-        console.log('erreur gestion-traitement updateOneTraitementInStorage set liste traitements local', err);
-      });
-    }).catch((err) => {
-      console.log('erreur gestion-traitement updateOneTraitementInStorage get liste traitements local', err);
-    });  
+        console.log('erreur gestion-traitement updateOneTraitementInStorage get liste traitements local', err);
+        reject(err);
+      });  
+    })
   }
 
 

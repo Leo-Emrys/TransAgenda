@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { GestionTraitementProvider } from '../gestion-traitement/gestion-traitement';
 
 let cordova;
 
 @Injectable()
 export class NotificationsProvider {
 
-  constructor(private localNotifications: LocalNotifications) {
+  constructor(private localNotifications: LocalNotifications, private traitementService: GestionTraitementProvider) {
     console.log('Hello NotificationsProvider Provider');
   }
 
@@ -73,7 +74,9 @@ export class NotificationsProvider {
         rappel.sup = true;
         traitement.rappels[index].sup = true;
         //todo: modifier dans storage
-        resolve(true);
+        this.traitementService.updateOneTraitementInStorage(traitement).then((res) => {
+          resolve(true);
+        })
       })
     });
   }
@@ -106,8 +109,15 @@ export class NotificationsProvider {
     });
   }
 
+  scheduleAllRappels(traitement) {
+    for(let rappel of traitement.rappels) {
+      console.log(rappel);
+      this.addNotification(traitement, rappel);
+    }
+  }
+
   getDateRappel(traitement, rappel) {
-    let prochdate = new Date(new Date(traitement.date_debut).getTime() - (1000 * 60 * 60 * 24 * rappel.nb_jours));
+    let prochdate = new Date(new Date(traitement.next_date).getTime() - (1000 * 60 * 60 * 24 * rappel.nb_jours));
     let year = prochdate.getFullYear();
     let month = prochdate.getMonth();
     let day = prochdate.getDate();

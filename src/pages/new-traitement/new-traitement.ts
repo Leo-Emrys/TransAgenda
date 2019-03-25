@@ -89,6 +89,10 @@ export class NewTraitementPage {
           let idtraitement = 0;
           if(liste) {
             idtraitement = liste.length;
+            liste.forEach(element => {
+              if(element.id>=idtraitement)
+                idtraitement = element.id+1;
+            });
             liste.push(this.traitement);
           } else {
             liste = [this.traitement];

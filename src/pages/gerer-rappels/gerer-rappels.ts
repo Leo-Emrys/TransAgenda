@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
 import { AddRappelModalPage } from '../add-rappel-modal/add-rappel-modal';
+import { GestionTraitementProvider } from '../../providers/gestion-traitement/gestion-traitement';
 
 @Component({
   selector: 'page-gerer-rappels',
@@ -12,7 +13,7 @@ export class GererRappelsPage {
   traitement;
   displayRappels;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private notifications: NotificationsProvider, private toastCtrl: ToastController, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private notifications: NotificationsProvider, private toastCtrl: ToastController, private modalCtrl: ModalController, private traitementService: GestionTraitementProvider) {
     this.traitement = this.navParams.get('traitement');
     if(this.traitement.rappels) {
       this.displayRappels = this.traitement.rappels.filter((r) => !r.sup)
@@ -48,8 +49,8 @@ export class GererRappelsPage {
           } else {
             this.displayRappels = [data.rappel];
           }
-          //TODO :: modifier dans storage
-          
+          // modifier dans storage
+          this.traitementService.updateOneTraitementInStorage(this.traitement);
         }).catch((err) => {
           console.log(err);
           this.toastCtrl.create({

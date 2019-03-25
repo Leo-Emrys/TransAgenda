@@ -16,7 +16,7 @@
         Produit :
       </ion-col>
       <ion-col col-6 text-left>
-        {{traitement.produit}} ({{traitement.id}})
+        {{traitement.produit}}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -56,6 +56,11 @@
         <button full ion-button (click)="gererRappels()">
           Gérer les rappels
         </button>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col col-6 col-offset-3>
+        <button ion-button color="danger" (click)="supprimerTraitement()">Supprimer</button>
       </ion-col>
     </ion-row>
   </ion-grid>
