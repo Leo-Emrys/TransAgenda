@@ -70,6 +70,26 @@ export class GestionTraitementProvider {
         }
     }
 
+    supprimerTraitement(traitement) {
+      return new Promise((resolve, reject) => {
+        this.storage.get('TransAgenda_traitements').then((liste)=> {
+          if(liste) {
+            let traitementIndex = liste.findIndex(tt => tt.id === traitement.id);
+            if(traitementIndex!==-1) {
+              liste.splice(traitementIndex, 1);
+              this.storage.set('TransAgenda_traitements', liste).then((res) => {
+                resolve(true);
+              })
+            } else {
+              reject(false);
+            }
+          } else {
+            reject(false);
+          }
+        });
+      })
+    }
+
     
     updateDates(traitement){
       traitement.last_date = this.fonctionCommunes.toPrintDateFormat(new Date());

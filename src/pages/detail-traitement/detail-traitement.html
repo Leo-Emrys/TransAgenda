@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
+  <ion-grid *ngIf="traitement">
     <ion-row justify-content-center>
       <h2>Fiche du traitement</h2>
     </ion-row>
@@ -43,7 +43,7 @@
         {{traitement.hormone}}
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="traitement.last_date" justify-content-center>
+    <ion-row *ngIf="traitement && traitement.last_date" justify-content-center>
       Dernière prise : {{traitement.last_date}}
     </ion-row>
     <ion-row justify-content-center>
