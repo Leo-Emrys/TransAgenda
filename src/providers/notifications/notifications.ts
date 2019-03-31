@@ -112,7 +112,8 @@ export class NotificationsProvider {
   scheduleAllRappels(traitement) {
     for(let rappel of traitement.rappels) {
       console.log(rappel);
-      this.addNotification(traitement, rappel);
+      if(!rappel.sup)
+        this.addNotification(traitement, rappel);
     }
   }
 
