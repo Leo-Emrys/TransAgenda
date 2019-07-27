@@ -42,8 +42,11 @@ export class GererRappelsPage {
     let modal = this.modalCtrl.create(AddRappelModalPage, {traitement:this.traitement});
     modal.onDidDismiss((data) => {
       if(data) {
-        this.notifications.addNotification(this.traitement, data.rappel).then((res) => {
-          this.traitement.rappels.push(data.rappel);
+        this.notifications.addNotification(this.traitement, data.rappel, true).then((res) => {
+          if(this.traitement.rappels)
+            this.traitement.rappels.push(data.rappel);
+          else
+            this.traitement.rappels = [data.rappel];
           if(this.displayRappels) {
             this.displayRappels.push(data.rappel);
           } else {

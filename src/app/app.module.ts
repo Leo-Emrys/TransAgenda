@@ -20,12 +20,14 @@ import { GererRappelsPage } from '../pages/gerer-rappels/gerer-rappels';
 import { GererZonesPage } from '../pages/gerer-zones/gerer-zones';
 import { GestionTraitementProvider } from '../providers/gestion-traitement/gestion-traitement';
 import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
+import { AddZoneModalPage } from '../pages/add-zone-modal/add-zone-modal';
 
 
 
 @NgModule({
   declarations: [
     AddRappelModalPage,
+    AddZoneModalPage,
     DetailTraitementPage,
     GererRappelsPage,
     GererZonesPage,
@@ -48,6 +50,7 @@ import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
   bootstrap: [IonicApp],
   entryComponents: [
     AddRappelModalPage,
+    AddZoneModalPage,
     DetailTraitementPage,
     GererRappelsPage,
     GererZonesPage,
