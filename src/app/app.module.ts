@@ -21,6 +21,11 @@ import { GererZonesPage } from '../pages/gerer-zones/gerer-zones';
 import { GestionTraitementProvider } from '../providers/gestion-traitement/gestion-traitement';
 import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
 import { AddZoneModalPage } from '../pages/add-zone-modal/add-zone-modal';
+import { OrdonnancesPage } from '../pages/ordonnances/ordonnances';
+import { StockPage } from '../pages/stock/stock';
+import { SuiviPage } from '../pages/suivi/suivi';
+import { NewOrdonnancePage } from '../pages/new-ordonnance/new-ordonnance';
+import { OrdonnanceProvider } from '../providers/ordonnance/ordonnance';
 
 
 
@@ -35,7 +40,11 @@ import { AddZoneModalPage } from '../pages/add-zone-modal/add-zone-modal';
     ListeTraitementsPage,
     MenuFooterComponent,
     MyApp,
-    NewTraitementPage
+    NewOrdonnancePage,
+    NewTraitementPage,
+    OrdonnancesPage,
+    StockPage,
+    SuiviPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +67,11 @@ import { AddZoneModalPage } from '../pages/add-zone-modal/add-zone-modal';
     ListeTraitementsPage,
     MenuFooterComponent,
     MyApp,
+    NewOrdonnancePage,
     NewTraitementPage,
+    OrdonnancesPage,
+    StockPage,
+    SuiviPage
   ],
   providers: [
     LocalNotifications,
@@ -68,7 +81,8 @@ import { AddZoneModalPage } from '../pages/add-zone-modal/add-zone-modal';
     VariablesCommunesProvider,
     FonctionsCommunesProvider,
     NotificationsProvider,
-    GestionTraitementProvider
+    GestionTraitementProvider,
+    OrdonnanceProvider
   ]
 })
 export class AppModule {}

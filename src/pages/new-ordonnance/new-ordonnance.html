@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Trans Agenda</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label>Nom</ion-label>
+          <ion-input type="text" [(ngModel)]="ordonnance.nom"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label>Date de délivrance</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="ordonnance.start_date"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4>
+        <ion-label>Valable</ion-label>
+      </ion-col>
+      <ion-col col-4>
+        <ion-item>
+          <ion-input type="number" [(ngModel)]="ordonnance.duree" placeholder="30"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4>
+        <ion-select class="selectJM" [(ngModel)]="joursMois">
+          <ion-option value="jours">Jours</ion-option>
+          <ion-option value="mois">Mois</ion-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button full (click)="creer()">Valider</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <menu-footer currentPage="ordos">
+  </menu-footer>
+</ion-footer>

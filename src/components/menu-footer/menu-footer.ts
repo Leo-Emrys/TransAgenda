@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { ListeTraitementsPage } from '../../pages/liste-traitements/liste-traitements';
+import { OrdonnancesPage } from '../../pages/ordonnances/ordonnances';
+import { StockPage } from '../../pages/stock/stock';
+import { SuiviPage } from '../../pages/suivi/suivi';
 
-/**
- * Generated class for the MenuFooterComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'menu-footer',
   templateUrl: 'menu-footer.html'
 })
 export class MenuFooterComponent {
 
-  currentPage = "home";
+  //currentPage = "home";
+  @Input() currentPage;
 
-  constructor() {
+  constructor(private navCtrl: NavController) {
     console.log('Hello MenuFooterComponent Component');
   }
 
   goTo(page) {
-    this.currentPage = page;
+    switch(page) {
+      case 'home' : this.navCtrl.setRoot(ListeTraitementsPage); break;
+      case 'ordos' : this.navCtrl.setRoot(OrdonnancesPage); break;
+      case 'stocks' : this.navCtrl.setRoot(StockPage); break;
+      case 'stats' : this.navCtrl.setRoot(SuiviPage); break;
+    }
   }
 
 }
