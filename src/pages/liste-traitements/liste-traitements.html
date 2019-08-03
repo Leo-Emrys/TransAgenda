@@ -13,13 +13,15 @@
       <br>
       <div class="date" (click)="openDetails(traitement)" text-center>Prochaine prise : {{traitement.next_date}}</div>
       <div class="nextZone" (click)="openDetails(traitement)" *ngIf="traitement.next_zone" text-center>Zone : {{fonctionCommunes.printZone(traitement.next_zone)}}</div>
-      <button ion-button (click)="updateTraitement(traitement)">J'ai pris mon traitement !</button>
-      <!-- updateTraitement a partir date du clic. prevoir possibilite d'entrer une date de derniere prise ?-->
+      <button ion-button (click)="showDatePicker(traitement)" >J'ai pris mon traitement !</button>
     </ion-card>
   </ion-list>
   <button ion-button (click)='new()'>Nouveau</button>
 </ion-content>
-
+<ion-item no-lines hidden="true">
+    <ion-datetime #datePicker displayFormat="DD/MM/YYYY" (ionChange) ="updateTraitement()" [(ngModel)]="date_derniere_prise" doneText="OK" cancelText="ANNULER" [min]="today" max="3000-12-31">
+    </ion-datetime>
+  </ion-item>
 <ion-footer>
   <menu-footer>
   </menu-footer>
