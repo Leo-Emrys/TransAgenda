@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Trans Agenda</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-card *ngFor="let ordo of ordonnances">
+      <h2 class="titre" (click)="voirDetail(ordo)">{{ordo.nom}} ></h2>
+      <br/>
+      <!-- <div class="date">Délivrée le {{ordo.start_date}}</div>
+      <div class="duree">Durée : {{ordo.duree}} jours</div> -->
+      <div class="date" (click)="voirDetail(ordo)">Fin de validité le {{ordo.end_date}}</div>
+      <button ion-button (click)="updateOrdo(ordo)">Renouveller</button>
+    </ion-card>
+  </ion-list>
+  <button ion-button (click)="newOrdo()">Nouvelle</button>
+</ion-content>
+
+<ion-footer>
+  <menu-footer currentPage="ordos">
+  </menu-footer>
+</ion-footer>

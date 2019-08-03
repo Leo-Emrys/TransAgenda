@@ -1,0 +1,17 @@
+page-ordonnances {
+    text-align: center;
+    .titre {
+        background-color: rgb(186, 221, 220);
+        padding:5px;
+    }
+    .date, .duree {
+        color:gray;
+        font-weight: 400;
+        padding-bottom:10px;
+    }
+    ion-card {
+        button {
+            margin-bottom:0!important;
+        }
+    }
+}

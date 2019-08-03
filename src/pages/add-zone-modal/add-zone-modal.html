@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Trans Agenda</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-select [(ngModel)]="zone.nom">
+            <ion-option *ngFor="let zone of listZones" [value]="zone">{{zone}}</ion-option>
+            <ion-option value="add">Ajouter...</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="zone.nom=='add'">
+          <ion-label floating>Entrez la nouvelle zone</ion-label>
+          <ion-input type="text" [(ngModel)]="new_zone_add"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Côté</ion-label>
+          <ion-select [(ngModel)]="zone.cote">
+            <ion-option value='' selected>aucun</ion-option>
+            <ion-option value="gauche">gauche</ion-option>
+            <ion-option value="droit">droit</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="boutonrow">
+      <ion-col col-6>
+        <button ion-button color="secondary" full (click)="dismiss()">Annuler</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button full (click)="creer()">Créer la zone</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

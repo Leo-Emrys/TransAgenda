@@ -81,11 +81,12 @@ export class NotificationsProvider {
     });
   }
 
-  addNotification(traitement, rappel) {
+  addNotification(traitement, rappel, newr=false) {
     return new Promise((resolve, reject) => {
       let dateRappel = this.getDateRappel(traitement, rappel);
       let index = traitement.rappels.length;
-      //let found = traitement.rappels.find((r, i) => {index=i; return r==rappel;});
+      if(!newr)
+        traitement.rappels.find((r, i) => {index=i; return r==rappel;});
       let idrappel = traitement.id + '' + index;
   
       let texte = traitement.produit + " à prendre dans " + rappel.nb_jours + " jours !";

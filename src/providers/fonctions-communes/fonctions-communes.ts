@@ -38,6 +38,7 @@ export class FonctionsCommunesProvider {
 
     toDateFormat(dateStr)
     {
+      console.log('datestr', dateStr)
       let dateArray = dateStr.split('/');
       if (dateArray && dateArray.length == 3){
         let day  = dateArray[0];

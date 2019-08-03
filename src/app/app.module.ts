@@ -20,12 +20,19 @@ import { GererRappelsPage } from '../pages/gerer-rappels/gerer-rappels';
 import { GererZonesPage } from '../pages/gerer-zones/gerer-zones';
 import { GestionTraitementProvider } from '../providers/gestion-traitement/gestion-traitement';
 import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
+import { AddZoneModalPage } from '../pages/add-zone-modal/add-zone-modal';
+import { OrdonnancesPage } from '../pages/ordonnances/ordonnances';
+import { StockPage } from '../pages/stock/stock';
+import { SuiviPage } from '../pages/suivi/suivi';
+import { NewOrdonnancePage } from '../pages/new-ordonnance/new-ordonnance';
+import { OrdonnanceProvider } from '../providers/ordonnance/ordonnance';
 
 
 
 @NgModule({
   declarations: [
     AddRappelModalPage,
+    AddZoneModalPage,
     DetailTraitementPage,
     GererRappelsPage,
     GererZonesPage,
@@ -33,7 +40,11 @@ import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
     ListeTraitementsPage,
     MenuFooterComponent,
     MyApp,
-    NewTraitementPage
+    NewOrdonnancePage,
+    NewTraitementPage,
+    OrdonnancesPage,
+    StockPage,
+    SuiviPage
   ],
   imports: [
     BrowserModule,
@@ -48,6 +59,7 @@ import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
   bootstrap: [IonicApp],
   entryComponents: [
     AddRappelModalPage,
+    AddZoneModalPage,
     DetailTraitementPage,
     GererRappelsPage,
     GererZonesPage,
@@ -55,7 +67,11 @@ import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
     ListeTraitementsPage,
     MenuFooterComponent,
     MyApp,
+    NewOrdonnancePage,
     NewTraitementPage,
+    OrdonnancesPage,
+    StockPage,
+    SuiviPage
   ],
   providers: [
     LocalNotifications,
@@ -65,7 +81,8 @@ import { AddRappelModalPage } from '../pages/add-rappel-modal/add-rappel-modal';
     VariablesCommunesProvider,
     FonctionsCommunesProvider,
     NotificationsProvider,
-    GestionTraitementProvider
+    GestionTraitementProvider,
+    OrdonnanceProvider
   ]
 })
 export class AppModule {}
