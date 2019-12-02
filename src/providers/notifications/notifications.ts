@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { GestionTraitementProvider } from '../gestion-traitement/gestion-traitement';
+import { FonctionsCommunesProvider } from "../../providers/fonctions-communes/fonctions-communes";
 
 let cordova;
 
 @Injectable()
 export class NotificationsProvider {
 
-  constructor(private localNotifications: LocalNotifications, private traitementService: GestionTraitementProvider) {
+  constructor(private localNotifications: LocalNotifications, private traitementService: GestionTraitementProvider, private fonctionCommunes: FonctionsCommunesProvider) {
     console.log('Hello NotificationsProvider Provider');
   }
 
@@ -119,10 +120,15 @@ export class NotificationsProvider {
   }
 
   getDateRappel(traitement, rappel) {
-    let prochdate = new Date(new Date(traitement.next_date).getTime() - (1000 * 60 * 60 * 24 * rappel.nb_jours));
+    console.log("notifications.ts > getDateRappel : traitement.next_date : "+traitement.next_date);
+    let prochdate = new Date(this.fonctionCommunes.toDateFormat(traitement.next_date).getTime() - (1000 * 60 * 60 * 24 * rappel.nb_jours));
     let year = prochdate.getFullYear();
     let month = prochdate.getMonth();
     let day = prochdate.getDate();
+    console.log("notifications.ts > getDateRappel : prochdate : "+prochdate);
+    console.log("notifications.ts > getDateRappel : year : "+year);
+    console.log("notifications.ts > getDateRappel : month : "+month);
+    console.log("notifications.ts > getDateRappel : day : "+day);
     let datestr = "" + year + '-' + ((month < 10) ? '0' + (month + 1) : (month + 1)) + '-' + ((day < 10) ? '0' + day : day) + 'T' + rappel.heure;
     console.log(datestr);
     let dateRappel = new Date(datestr);
